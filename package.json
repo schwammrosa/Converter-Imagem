@@ -1,0 +1,32 @@
+{
+  "name": "conversor-imagem-avif",
+  "version": "1.0.0",
+  "description": "Aplicativo para converter e redimensionar imagens para os formatos AVIF e WebP",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win nsis",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^25.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "dependencies": {
+    "sharp": "^0.32.1"
+  },
+  "build": {
+    "appId": "com.conversor.avif",
+    "productName": "Conversor de Imagens AVIF-WebP",
+    "win": {
+      "target": ["nsis"],
+      "icon": "assets/icone.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}

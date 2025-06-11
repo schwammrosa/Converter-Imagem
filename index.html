@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Conversor</h1>
+        </header>
+        
+        <main>
+            <div class="upload-container">
+                <div class="upload-area" id="uploadArea">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Arraste e solte sua imagem aqui ou</p>
+                    <button id="selectFileBtn" class="btn">Selecionar Arquivo</button>
+                    <input type="file" id="fileInput" accept="image/*" hidden>
+                </div>
+            </div>
+            
+            <div class="preview-container" id="previewContainer" style="display: none;">
+                <div class="preview-header">
+                    <h2>Pré-visualização</h2>
+                    <button id="changeImageBtn" class="btn btn-small">Trocar Imagem</button>
+                </div>
+                
+                <div class="preview-content">
+                    <div class="image-preview">
+                        <img id="previewImage" src="" alt="Pré-visualização da imagem">
+                    </div>
+                    
+                    <div class="image-info">
+                        <h3>Informações da Imagem</h3>
+                        <ul>
+                            <li>Nome: <span id="imageName"></span></li>
+                            <li>Dimensões originais: <span id="imageDimensions"></span></li>
+                            <li>Tamanho do arquivo: <span id="imageSize"></span></li>
+                            <li>Tipo: <span id="imageType"></span></li>
+                        </ul>
+                        
+                        <!-- Resultados da conversão movidos para aqui -->
+                        <div class="conversion-result" id="conversionResult" style="display: none;">
+                            <h3>Conversão Concluída!</h3>
+                            <div class="result-info">
+                                <p>Arquivo salvo em: <span id="savedLocation"></span></p>
+                                <p>Tamanho original: <span id="originalSize"></span> | <span id="converted-size-label">Tamanho <span id="formato-saida">AVIF</span>:</span> <span id="avifSize"></span></p>
+                                <p>Redução: <span id="sizeReduction"></span>%</p>
+                            </div>
+                            <button id="openFolderBtn" class="btn">Abrir Local</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="conversion-options">
+                    <h3>Opções de Conversão</h3>
+                    <div class="option-row">
+                        <label>Formato de saída:</label>
+                        <div class="format-options">
+                            <label class="radio-label">
+                                <input type="radio" name="outputFormat" id="formatAVIF" value="avif" checked>
+                                AVIF
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="outputFormat" id="formatWEBP" value="webp">
+                                WebP
+                            </label>
+                        </div>
+                    </div>
+                    <div class="option-row">
+                        <label>
+                            <input type="checkbox" id="maintainAspectRatio" checked>
+                            Manter proporção da imagem
+                        </label>
+                    </div>
+                    <div class="option-row">
+                        <label>
+                            <input type="checkbox" id="centerCrop" checked>
+                            Cortar e centralizar (700x400px)
+                        </label>
+                    </div>
+                    <div class="option-row">
+                        <label>Qualidade da imagem:</label>
+                        <div class="slider-container">
+                            <input type="range" id="qualitySlider" min="1" max="100" value="50">
+                            <span id="qualityValue">50%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button id="convertBtn" class="btn btn-primary">Converter para AVIF</button>
+                </div>
+                
+                <!-- Seção de resultados movida para dentro da seção image-info -->
+            </div>
+        </main>
+        
+        <footer>
+            <p></p>
+        </footer>
+    </div>
+    
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <p>Processando imagem...</p>
+    </div>
+    
+    <script src="js/app.js"></script>
+</body>
+</html>
